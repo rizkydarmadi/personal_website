@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String
-from models import Base
+from . import Base
 
 class jenisContent(Base):
     __tablename__ = "jenis_content"

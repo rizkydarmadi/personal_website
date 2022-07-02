@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, DateTime
-from models import Base
+from . import Base
 
 class email(Base):
     __tablename__ = "email"

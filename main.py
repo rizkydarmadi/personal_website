@@ -1,11 +1,10 @@
-from crypt import methods
-from flask import Flask, render_template
-from markupsafe import Markup
+from flask import Blueprint, render_template
+from .__init__ import create_app
 
 
-app = Flask(__name__)
+main = Blueprint('main',__name__)
 
-@app.route("/")
+@main.route("/")
 def home():
     # ambil content home dari database
     data = '''
@@ -17,29 +16,6 @@ def home():
 }
     return render_template('base.html',data=content)
 
-@app.route("/library")
-def library():
-    # simpan data ke database
-    data = '''
-    <h1>This is library</h1>
-    '''
-
-    content = {
-    "content": data, 
-}
-    return render_template('base.html',data=content)
-
-@app.route("/contact")
-def contact():
-    # simpan data ke database
-    data = '''
-
-    <h1>this is contact</h1>
-
-
-    '''
-
-    content = {
-    "content": data, 
-}
-    return render_template('base.html',data=content)
+app = create_app()
+if __name__ == '__main__':
+	app.run(debug=True)
